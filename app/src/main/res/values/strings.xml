@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">"Socket Experiment 0"</string>
+    <string name="title_send">Send</string>
+    <string name="title_receive">Receive</string>
+    <string name="send_description">
+        Send a message via TCP Socket to the specified IP Address
+    </string>
+    <string name="send_button_text">Send</string>
+    <string name="editSendHost_placeholder">IP Address</string>
+    <string name="editSendHost_helper">"IP: "</string>
+    <string name="editSendPort_placeholder">Port</string>
+    <string name="editMessage_placeholder">Message</string>
+    <string name="comingSoon">Coming Soon…</string>
+    <string name="experimentDescription">
+        This is an experiment to check Socket Connectivity between Android and other platforms
+    </string>
+    <string name="author">Made by DAWN/ペンギン</string>
+</resources>
