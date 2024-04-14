@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.socketexperiment0.databinding.FragmentReceiveBinding
@@ -25,15 +26,20 @@ class ReceiveFragment : Fragment() {
         //val receiveViewModel = ViewModelProvider(this)[ReceiveViewModel::class.java]
 
         _binding = FragmentReceiveBinding.inflate(inflater, container, false)
+         
 
-        /*
-        val textView: TextView = binding.textDashboard
-        receiveViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-         */
+
         return binding.root
     }
+
+    /*
+    private fun receiveData() {
+        val url = "https://chinmayavidyalaya.zohodesk.in/portal"
+        //val intent = CustomTabsIntent.Builder().build()
+        //intent.launchUrl(this, Uri.parse(url))
+    }
+
+     */
 
     override fun onDestroyView() {
         super.onDestroyView()
