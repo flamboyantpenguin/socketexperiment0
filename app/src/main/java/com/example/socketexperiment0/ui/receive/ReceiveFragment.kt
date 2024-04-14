@@ -21,11 +21,10 @@ class ReceiveFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val receiveViewModel =
-            ViewModelProvider(this).get(ReceiveViewModel::class.java)
+
+        //val receiveViewModel = ViewModelProvider(this)[ReceiveViewModel::class.java]
 
         _binding = FragmentReceiveBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         /*
         val textView: TextView = binding.textDashboard
@@ -33,7 +32,7 @@ class ReceiveFragment : Fragment() {
             textView.text = it
         }
          */
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

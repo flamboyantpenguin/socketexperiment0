@@ -15,4 +15,7 @@
         This is an experiment to check Socket Connectivity between Android and other platforms
     </string>
     <string name="author">Made by DAWN/ペンギン</string>
+    <string name="dawnLogoDescription">
+        DAWN Studios Logo
+    </string>
 </resources>

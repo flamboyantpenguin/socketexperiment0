@@ -11,7 +11,6 @@ android {
         applicationId = "com.example.socketexperiment0"
         minSdk = 30
         targetSdk = 34
-        versionCode = 0
         versionName = "0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
