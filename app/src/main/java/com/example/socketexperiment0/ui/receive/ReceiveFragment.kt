@@ -31,7 +31,7 @@ class ReceiveFragment : Fragment() {
         return binding.root
     }
 
-    public fun startMeow() {
+    fun startMeow() {
 
     }
 
