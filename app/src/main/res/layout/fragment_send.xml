@@ -4,27 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
     tools:context=".ui.send.SendFragment">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="356dp"
-        android:text="@string/send_button_text"
-        app:icon="@drawable/baseline_send_24"
-        app:iconPadding="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="100dp"
         android:text="@string/send_description"
         android:textAlignment="viewStart"
         android:textColor="@color/material_dynamic_primary60"
@@ -40,15 +29,15 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="40dp"
+        android:hint="@string/editSendHost_placeholder"
         app:boxBackgroundMode="outline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/editSendHost_placeholder">
+        app:layout_constraintTop_toTopOf="@id/description">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,16 +46,16 @@
         android:id="@+id/editSendPort"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/editSendPort_placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@id/editSendHost"
+        app:layout_constraintTop_toTopOf="@id/description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:inputType="number"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,13 +65,12 @@
         android:layout_width="373dp"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/editMessage_placeholder"
         app:boxBackgroundMode="outline"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/editSendHost">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -94,24 +82,22 @@
         android:id="@+id/textClock"
         android:layout_width="116dp"
         android:layout_height="28dp"
-        android:layout_marginStart="284dp"
-        android:layout_marginBottom="144dp"
-        android:textAlignment="viewEnd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/editMessage"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/send_logo"
         android:layout_width="119dp"
         android:layout_height="103dp"
-        android:layout_marginStart="284dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/app_logo_green"
-        app:layout_constraintBottom_toTopOf="@+id/textClock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendButton"
+        app:layout_constraintTop_toBottomOf="@id/textClock"
+        app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/material_dynamic_primary70" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

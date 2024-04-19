@@ -32,6 +32,10 @@ class ReceiveFragment : Fragment() {
         return binding.root
     }
 
+    public fun startMeow() {
+
+    }
+
     /*
     private fun receiveData() {
         val url = "https://chinmayavidyalaya.zohodesk.in/portal"
