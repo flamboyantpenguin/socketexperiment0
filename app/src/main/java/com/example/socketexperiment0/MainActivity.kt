@@ -1,22 +1,18 @@
 package com.example.socketexperiment0
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.socketexperiment0.databinding.ActivityMainBinding
+import com.example.socketexperiment0.ui.send.SendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.textfield.TextInputLayout
-import java.net.InetSocketAddress
-import java.net.Socket
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        /*
+        //val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
+        //val navHostFragment = binding.navHostFragmentActivityMain
+        //val navController = navHostFragment.navController
 
         val navView: BottomNavigationView = binding.navView
 
@@ -42,73 +43,40 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+         */
+
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        findViewById<BottomNavigationView>(R.id.nav_view).setupWithNavController(navController)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_send, R.id.navigation_receive
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val activeFrg = navHostFragment.childFragmentManager.fragments[0] as SendFragment
+        val mButton: FloatingActionButton = findViewById(R.id.mainButton)
+
+        mButton.setOnClickListener() {
+            if (activeFrg.isVisible and activeFrg.isAdded) {
+                if (activeFrg.isVisible) {
+                    activeFrg.startMeow()
+                }
+            }
+
+
+        }
+
         supportActionBar?.hide()
-
-        val editHostTextView : TextInputLayout = findViewById(R.id.editSendHost)
-        val editPortTextView : TextInputLayout = findViewById(R.id.editSendPort)
-        val editMessageTextView : TextInputLayout = findViewById(R.id.editMessage)
-        val sendDataButton : Button = findViewById(R.id.sendButton)
-        val logo : ImageView = findViewById(R.id.send_logo)
-        sendDataButton.setOnClickListener{
-            //val text: String = textInputLayout.getEditText().getText()
-            val returnValue = sendData(editHostTextView.editText?.text.toString(), editPortTextView.editText?.text.toString(), editMessageTextView.editText?.text.toString())
-            if (returnValue == 0) {
-                Toast.makeText(this, "Data Sent", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(this, "Error in Sending Data", Toast.LENGTH_SHORT).show()
-            }
-        }
-        logo.setOnClickListener {
-            val i = Intent(this@MainActivity, About::class.java)
-            startActivity(i)
-        }
     }
 
-    private fun sendData(host : String, port: String, message :String) : Int {
-
-        var receivedData = ""
-
-        val thread = Thread {
-            try {
-                val clSocket = Socket()
-                clSocket.connect(InetSocketAddress(host, port.toInt()), 500)
-                val inputStream = clSocket.getInputStream()
-                val outputStream = clSocket.getOutputStream()
-                outputStream.write(message.toByteArray())
-                receivedData = inputStream.reader().readText()
-                outputStream.close()
-                inputStream.close()
-                clSocket.close()
-            } catch (e: Exception) {
-                Log.d(null, e.toString())
-            }
-        }
-
-        if (message.length > 1024) {
-            Toast.makeText(this, "Text Size too Large", Toast.LENGTH_LONG).show()
-            return 1
-        }
-
-        if (host.isEmpty() && port.isEmpty() && message.isEmpty()) {
-            Toast.makeText(this, "Fill all fields to continue", Toast.LENGTH_SHORT).show()
-            return 1
-        }
-
-        Toast.makeText(this, "Sending Data to $host:$port", Toast.LENGTH_SHORT).show()
-        thread.start()
-        Toast.makeText(this, receivedData, Toast.LENGTH_SHORT).show()
-        return 0
+    override fun onResume() {
+        super.onResume()
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
     }
 
-
-
-    /*
-    private fun receiveData() {
-        val url = "https://chinmayavidyalaya.zohodesk.in/portal"
-        //val intent = CustomTabsIntent.Builder().build()
-        //intent.launchUrl(this, Uri.parse(url))
-    }
-
-     */
 }
+

@@ -18,4 +18,5 @@
     <string name="dawnLogoDescription">
         DAWN Studios Logo
     </string>
+    <string name="mainButtonDescription">Send/Receive</string>
 </resources>
