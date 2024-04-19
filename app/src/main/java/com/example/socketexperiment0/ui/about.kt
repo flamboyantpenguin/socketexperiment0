@@ -1,8 +1,10 @@
-package com.example.socketexperiment0
+package com.example.socketexperiment0.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.socketexperiment0.MainActivity
+import com.example.socketexperiment0.R
 
 class About : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

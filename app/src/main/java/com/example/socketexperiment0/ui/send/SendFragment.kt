@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.socketexperiment0.About
+import com.example.socketexperiment0.ui.About
 import com.example.socketexperiment0.databinding.FragmentSendBinding
 import com.google.android.material.textfield.TextInputLayout
 import java.net.InetSocketAddress
