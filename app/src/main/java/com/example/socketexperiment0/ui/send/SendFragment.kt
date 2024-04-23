@@ -8,11 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.socketexperiment0.R
 import com.example.socketexperiment0.connectionHandler.TCPHandler
 import com.example.socketexperiment0.databinding.FragmentSendBinding
 import com.example.socketexperiment0.ui.CustomAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
 import java.util.Stack
 

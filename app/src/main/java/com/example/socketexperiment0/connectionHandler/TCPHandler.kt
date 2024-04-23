@@ -1,7 +1,6 @@
 package com.example.socketexperiment0.connectionHandler
 
 import android.util.Log
-import android.widget.Toast
 import com.example.socketexperiment0.ui.receive.ReceiveFragment
 import com.example.socketexperiment0.ui.send.SendFragment
 import java.io.DataInputStream
@@ -14,19 +13,12 @@ class TcpClientHandler(private val activeFrg : ReceiveFragment, private var retu
     override fun run() {
         if (!(activeFrg.killSwitch)) {
             try {
-                /*
-                if(dataInputStream.available() > 0){
-                    Log.i("Server class", "Received: " + dataInputStream.readUTF())
-                    dataOutputStream.writeUTF("Hello Client")
-                    sleep(2000L)
-                }
 
-                 */
                 cSocket.setSoLinger(true, 1)
                 val msg = dataInputStream.reader().readText()
                 Log.i("Server", "Received Message: $msg")
                 val tmp = ArrayList<String>(listOf(msg))
-                cSocket.inetAddress.hostAddress?.let { tmp.plusAssign(it.toString()) }
+                cSocket.inetAddress.hostAddress?.let { tmp.plusAssign(it) }
                 tmp.plusAssign("")
                 activeFrg.msgLst.push(tmp)
                 activeFrg.tempLst.add(activeFrg.msgLst.indexOf(tmp).toString())
@@ -59,7 +51,6 @@ class TcpClientHandler(private val activeFrg : ReceiveFragment, private var retu
     }
 
     companion object {
-        private val TAG = TcpClientHandler::class.java.simpleName
     }
 
 }
@@ -76,7 +67,6 @@ class TCPHandler(private val sendFrg : SendFragment, private val host: String, p
             val outputStream = clSocket.getOutputStream()
             outputStream.write(message.toByteArray())
             outputStream.flush()
-            outputStream.close()
             val receivedData = DataInputStream(clSocket.getInputStream()).reader().readText()
             sendFrg.history.push(ArrayList(listOf(clSocket.inetAddress.hostAddress, receivedData, message)))
             sendFrg.updateAdapter(sendFrg.history.count())
@@ -92,7 +82,6 @@ class TCPHandler(private val sendFrg : SendFragment, private val host: String, p
     }
 
     companion object {
-        private val TAG = TcpClientHandler::class.java.simpleName
     }
 
 }

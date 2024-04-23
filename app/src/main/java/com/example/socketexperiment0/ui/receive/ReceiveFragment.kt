@@ -62,7 +62,7 @@ class ReceiveFragment : Fragment() {
 
         //val recyclerView: RecyclerView = binding.root.findViewById(R.id.msgLstView)
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager)
         recyclerView.adapter = this.arrayAdapter
 
         val progress = binding.progressBar
