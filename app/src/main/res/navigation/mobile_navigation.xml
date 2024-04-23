@@ -19,4 +19,11 @@
         android:label="@string/title_receive"
         tools:layout="@layout/fragment_receive" />
 
+    <fragment
+        android:id="@+id/navigation_about"
+        android:tag="temp3"
+        android:name="com.example.socketexperiment0.ui.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/about" />
+
 </navigation>

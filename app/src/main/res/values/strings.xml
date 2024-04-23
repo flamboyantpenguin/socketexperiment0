@@ -2,6 +2,7 @@
     <string name="app_name">"Socket Experiment 0"</string>
     <string name="title_send">Send</string>
     <string name="title_receive">Receive</string>
+    <string name="title_about">About</string>
     <string name="send_description">
         Send a message via TCP Socket to the specified IP Address
     </string>
@@ -26,4 +27,6 @@
     <string name="mainButtonDescription">Send/Receive</string>
     <string name="message_logo">Message Logo</string>
     <string name="notification_icon_desc">Notification Icon</string>
+    <string name="status_desc">Status</string>
+    <string name="refresh_button_desc">Refresh</string>
 </resources>

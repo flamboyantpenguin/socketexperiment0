@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.nav_view).setupWithNavController(navController)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_send, R.id.navigation_receive
+                R.id.navigation_send, R.id.navigation_receive, R.id.navigation_about
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         var rFrg : ReceiveFragment
         val activeFrg = navHostFragment.childFragmentManager.fragments[0] as SendFragment
         val mButton: FloatingActionButton = findViewById(R.id.mainButton)
+        mButton.show()
 
         mButton.setOnClickListener {
             if (activeFrg.isVisible and activeFrg.isAdded) {
@@ -52,10 +53,9 @@ class MainActivity : AppCompatActivity() {
             else {
                 rFrg = navHostFragment.childFragmentManager.fragments[1] as ReceiveFragment
             }
-
         }
 
-        //supportActionBar?.hide()
+        //supportActionBar?.show()
     }
 
     override fun onResume() {

@@ -11,4 +11,9 @@
         android:icon="@drawable/baseline_download_24"
         android:title="@string/title_receive" />
 
+    <item
+        android:id="@+id/navigation_about"
+        android:icon="@drawable/outline_info_24"
+        android:title="@string/title_receive" />
+
 </menu>
