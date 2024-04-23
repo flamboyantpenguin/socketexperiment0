@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:gravity="center_vertical">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id = "@+id/avatar"
+        android:layout_width = "40dp"
+        android:layout_height = "40dp"
+        android:layout_marginBottom = "20dp"
+        android:layout_marginLeft = "16dp"
+        android:layout_marginRight = "16dp"
+        android:layout_marginTop = "20dp"
+        android:src = "@drawable/app_logo"
+        android:tint ="@color/material_dynamic_primary70"
+        android:contentDescription = "@string/message_logo"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id = "@+id/first_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/title_receive"
+        android:textColor="@color/material_dynamic_primary70"
+        android:textSize = "20sp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id = "@+id/second_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "@string/title_receive"
+        android:textColor="@color/material_dynamic_primary70"
+        android:textSize = "14sp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id = "@+id/favourite"
+        android:layout_width = "24dp"
+        android:layout_height = "24dp"
+        android:layout_marginBottom = "16dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:tint  ="@color/material_dynamic_primary70"
+        android:contentDescription = "@string/notification_icon_desc"
+        android:src= "@drawable/outline_network_ping_24"/>
+
+</FrameLayout>

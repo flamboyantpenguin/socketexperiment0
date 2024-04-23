@@ -9,14 +9,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.socketexperiment0.ui.About
 import com.example.socketexperiment0.databinding.FragmentSendBinding
+import com.example.socketexperiment0.ui.About
 import com.google.android.material.textfield.TextInputLayout
-import java.net.InetSocketAddress
+import java.io.DataInputStream
 import java.net.Socket
+import java.util.LinkedList
+
+
 
 
 class SendFragment : Fragment() {
+
+    private var temp = LinkedList<String>()
 
     private var _binding: FragmentSendBinding? = null
 
@@ -33,7 +38,7 @@ class SendFragment : Fragment() {
 
         _binding = FragmentSendBinding.inflate(inflater, container, false)
 
-        val logo : ImageView = binding.sendLogo
+        val logo: ImageView = binding.sendLogo
         logo.setOnClickListener {
             val i = Intent(binding.root.context, About::class.java)
             startActivity(i)
@@ -44,31 +49,35 @@ class SendFragment : Fragment() {
 
     fun startMeow() {
 
-        val editHostTextView : TextInputLayout = binding.editSendHost
-        val editPortTextView : TextInputLayout = binding.editSendPort
-        val editMessageTextView : TextInputLayout = binding.editMessage
-        val returnValue = sendData(editHostTextView.editText?.text.toString(), editPortTextView.editText?.text.toString(), editMessageTextView.editText?.text.toString())
+        val editHostTextView: TextInputLayout = binding.editSendHost
+        val editPortTextView: TextInputLayout = binding.editSendPort
+        val editMessageTextView: TextInputLayout = binding.editMessage
+        val returnValue = sendData(
+            editHostTextView.editText?.text.toString(),
+            editPortTextView.editText?.text.toString(),
+            editMessageTextView.editText?.text.toString()
+        )
         if (returnValue == 0) {
             Toast.makeText(binding.root.context, "Data Sent", Toast.LENGTH_SHORT).show()
-        }
-        else {
+        } else {
             Toast.makeText(binding.root.context, "Error in Sending Data", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun sendData(host : String, port: String, message :String) : Int {
-
-
-        var receivedData = ""
+    private fun sendData(host: String, port: String, message: String): Int {
 
         val thread = Thread {
             try {
                 val clSocket = Socket()
-                clSocket.connect(InetSocketAddress(host, port.toInt()), 500)
-                val inputStream = clSocket.getInputStream()
+                //clSocket.connect(InetSocketAddress(host, port.toInt()), 500)
+                val inputStream = DataInputStream(clSocket.getInputStream())
                 val outputStream = clSocket.getOutputStream()
                 outputStream.write(message.toByteArray())
-                receivedData = inputStream.reader().readText()
+                //receivedData = inputStream.reader().readText()
+                //receivedData = getStringFromInputStream(inputStream)
+                val receivedData = inputStream.reader().readText()
+                this.temp.add(receivedData)
+                Log.i("Client", "Received: $receivedData")
                 outputStream.close()
                 inputStream.close()
                 clSocket.close()
@@ -83,13 +92,16 @@ class SendFragment : Fragment() {
         }
 
         if (host.isEmpty() && port.isEmpty() && message.isEmpty()) {
-            Toast.makeText(binding.root.context, "Fill all fields to continue", Toast.LENGTH_SHORT).show()
+            Toast.makeText(binding.root.context, "Fill all fields to continue", Toast.LENGTH_SHORT)
+                .show()
             return 1
         }
 
         Toast.makeText(binding.root.context, "Sending Data to $host:$port", Toast.LENGTH_SHORT).show()
         thread.start()
-        Toast.makeText(binding.root.context, receivedData, Toast.LENGTH_SHORT).show()
+        val receivedData = temp.poll()
+        Toast.makeText(binding.root.context, "Received: $receivedData", Toast.LENGTH_SHORT).show()
         return 0
     }
+
 }

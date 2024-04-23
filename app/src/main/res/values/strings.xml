@@ -5,11 +5,16 @@
     <string name="send_description">
         Send a message via TCP Socket to the specified IP Address
     </string>
+    <string name="receive_description">
+        Receive a message from TCP Socket initialized on the local address
+    </string>
     <string name="send_button_text">Send</string>
+    <string name="receiveToggleText">Start Listening</string>
     <string name="editSendHost_placeholder">IP Address</string>
     <string name="editSendHost_helper">"IP: "</string>
     <string name="editSendPort_placeholder">Port</string>
     <string name="editMessage_placeholder">Message</string>
+    <string name="editMessageReturn_placeholder">Return Message</string>
     <string name="comingSoon">Coming Soon…</string>
     <string name="experimentDescription">
         This is an experiment to check Socket Connectivity between Android and other platforms
@@ -19,4 +24,6 @@
         DAWN Studios Logo
     </string>
     <string name="mainButtonDescription">Send/Receive</string>
+    <string name="message_logo">Message Logo</string>
+    <string name="notification_icon_desc">Notification Icon</string>
 </resources>

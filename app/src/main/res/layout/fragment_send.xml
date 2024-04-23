@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:tag="@string/title_send"
     android:scrollbars="vertical"
-    tools:context=".ui.send.SendFragment">
+    tools:context=".ui.send.SendFragment"
+    android:paddingBottom="?actionBarSize">
 
 
     <com.google.android.material.textview.MaterialTextView
@@ -13,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="20dp"
         android:text="@string/send_description"
         android:textAlignment="viewStart"
         android:textColor="@color/material_dynamic_primary60"
@@ -25,7 +27,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editSendHost"
-        style="@style/ThemeOverlay.Material3.TextInputEditText"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -48,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
+        app:boxBackgroundMode="outline"
         android:hint="@string/editSendPort_placeholder"
         app:layout_constraintStart_toEndOf="@id/editSendHost"
         app:layout_constraintTop_toTopOf="@id/description">
@@ -55,15 +57,16 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColorHint="#78909C"
+            tools:ignore="TextContrastCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editMessage"
-        style="@style/ThemeOverlay.Material3.TextInputEditText"
         android:layout_width="373dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:hint="@string/editMessage_placeholder"
@@ -94,7 +97,7 @@
         android:layout_height="103dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/app_logo_green"
+        android:src="@drawable/app_logo"
         app:layout_constraintTop_toBottomOf="@id/textClock"
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/material_dynamic_primary70" />

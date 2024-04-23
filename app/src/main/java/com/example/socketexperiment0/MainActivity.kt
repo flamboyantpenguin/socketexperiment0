@@ -1,5 +1,6 @@
 package com.example.socketexperiment0
 
+
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.socketexperiment0.databinding.ActivityMainBinding
+import com.example.socketexperiment0.ui.receive.ReceiveFragment
 import com.example.socketexperiment0.ui.send.SendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
@@ -37,20 +39,23 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        var rFrg : ReceiveFragment
         val activeFrg = navHostFragment.childFragmentManager.fragments[0] as SendFragment
         val mButton: FloatingActionButton = findViewById(R.id.mainButton)
 
-        mButton.setOnClickListener() {
+        mButton.setOnClickListener {
             if (activeFrg.isVisible and activeFrg.isAdded) {
                 if (activeFrg.isVisible) {
                     activeFrg.startMeow()
                 }
             }
-
+            else {
+                rFrg = navHostFragment.childFragmentManager.fragments[1] as ReceiveFragment
+            }
 
         }
 
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
     }
 
     override fun onResume() {
