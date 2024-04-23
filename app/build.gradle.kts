@@ -23,10 +23,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            versionNameSuffix = "0.2"
+            versionNameSuffix = "1.0.0"
         }
         getByName("debug") {
-            versionNameSuffix = "0.2"
+            versionNameSuffix = "1.0.0"
         }
     }
     compileOptions {
