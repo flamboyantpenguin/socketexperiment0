@@ -46,6 +46,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
+        style="@style/Widget.Material3.FloatingActionButton.Primary"
         android:tooltipText="@string/mainButtonDescription"
         android:layout_gravity="bottom|end"
         android:contentDescription="@string/mainButtonDescription"

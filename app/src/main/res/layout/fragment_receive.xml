@@ -120,6 +120,7 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:minHeight="40dp"
+        android:indeterminateTintMode="src_in"
         android:minWidth="100dp"
         android:indeterminateTint="@color/material_dynamic_primary60"
         android:layout_marginStart="20dp"
