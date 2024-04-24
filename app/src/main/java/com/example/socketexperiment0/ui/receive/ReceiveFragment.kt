@@ -120,6 +120,7 @@ class ReceiveFragment : Fragment() {
 
         if (!(killSwitch)) {
             val t  = TCPListener(this, port.toInt())
+            view?.keepScreenOn = true
             progress.visibility = View.VISIBLE
             //progressBarUpdate.start()
             Log.i("Server", "Mew")
@@ -131,6 +132,7 @@ class ReceiveFragment : Fragment() {
             Log.i("Server", "Started Listening")
         } else {
             this.assassin()
+            view?.keepScreenOn = false
             //progressBarUpdate.interrupt()
             progress.visibility = View.INVISIBLE
             Toast.makeText(binding.root.context, "Stopped Listening", Toast.LENGTH_SHORT).show()
