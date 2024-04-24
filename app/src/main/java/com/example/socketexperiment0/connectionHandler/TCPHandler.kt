@@ -31,7 +31,7 @@ class TCPListener(private val recFrg : ReceiveFragment, private val port: Int) :
                     recFrg.returnText,
                     dataInputStream,
                     dataOutputStream,
-                    clSocket ?: Socket()
+                    clSocket
                 )
                 t.start()
             }
