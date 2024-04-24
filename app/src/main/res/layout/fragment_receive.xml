@@ -101,7 +101,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/msgLstView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:padding="20dp"
@@ -113,11 +113,15 @@
         tools:itemCount="10"
         tools:listitem="@layout/list_message" />
 
-    <ProgressBar
+    <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:minHeight="40dp"
+        android:minWidth="100dp"
+        android:indeterminateTint="@color/material_dynamic_primary60"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"

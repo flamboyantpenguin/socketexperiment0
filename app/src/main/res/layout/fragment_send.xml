@@ -13,6 +13,7 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
+        android:autoSizeTextType="uniform"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -97,9 +98,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/material_dynamic_primary40"
+        android:backgroundTint="@color/material_dynamic_primary80"
         android:contentDescription="@string/refresh_button_desc"
         app:icon="@drawable/round_refresh_24"
+        app:iconTint="@color/material_dynamic_neutral10"
         app:iconSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -109,7 +111,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:padding="20dp"
