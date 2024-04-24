@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.socketexperiment0.ui.receive.ReceiveFragment
 import com.example.socketexperiment0.ui.send.SendFragment
 import java.io.BufferedReader
-import java.io.DataInputStream
 import java.io.DataOutputStream
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -23,14 +22,10 @@ class TCPListener(private val recFrg : ReceiveFragment, private val port: Int) :
             try {
                 clSocket = srSocket.accept()
                 Log.i("Server", "New client: $clSocket")
-                val dataInputStream = DataInputStream(clSocket?.getInputStream())
-                val dataOutputStream = DataOutputStream(clSocket?.getOutputStream())
                 // Use threads for each client to communicate with them simultaneously
                 val t: Thread = TcpClientHandler(
                     recFrg,
                     recFrg.returnText,
-                    dataInputStream,
-                    dataOutputStream,
                     clSocket
                 )
                 t.start()
@@ -45,12 +40,21 @@ class TCPListener(private val recFrg : ReceiveFragment, private val port: Int) :
 }
 
 
-class TcpClientHandler(private val activeFrg : ReceiveFragment, private var returnText : String, private val dataInputStream: DataInputStream, private val dataOutputStream: DataOutputStream, private val cSocket: Socket) : Thread() {
+class TcpClientHandler(private val activeFrg : ReceiveFragment, private var returnText : String, private val cSocket: Socket) : Thread() {
     override fun run() {
         if (!(activeFrg.killSwitch)) {
             try {
                 cSocket.setSoLinger(true, 1)
-                val msg = BufferedReader(dataInputStream.reader()).readLine()
+                //BufferedWriter(cSocket.getOutputStream().writer()).write(returnText)
+                //cSocket.getOutputStream().writer().write(returnText)]
+                Log.i("Server", "Here1")
+                val msg = BufferedReader(cSocket.getInputStream().reader()).readLine()
+                Log.i("Server", "Here2")
+                DataOutputStream(cSocket.getOutputStream()).writeUTF(returnText+"\n")
+                Log.i("Server", "Here3")
+                //cSocket.getOutputStream().bufferedWriter().write(returnText)
+                cSocket.getOutputStream().flush()
+                Log.i("Server", "Here4")
                 Log.i("Server", "Received Message: $msg")
                 val tmp = ArrayList<String>(listOf(msg))
                 cSocket.inetAddress.hostAddress?.let { tmp.plusAssign(it) }
@@ -59,14 +63,15 @@ class TcpClientHandler(private val activeFrg : ReceiveFragment, private var retu
                 activeFrg.msgLst.push(tmp)
                 activeFrg.tempLst.add(activeFrg.msgLst.indexOf(tmp).toString())
                 activeFrg.updateAdapter()
-                dataOutputStream.writeUTF(returnText)
+
+                //dataOutputStream.close()
                 cSocket.close()
             } catch (e: IOException) {
                 e.printStackTrace()
                 Log.i("Server", "Error: $e")
                 try {
-                    dataInputStream.close()
-                    dataOutputStream.close()
+                    //dataInputStream.close()
+                    //dataOutputStream.close()
                 } catch (ex: IOException) {
                     ex.printStackTrace()
                 }
@@ -74,8 +79,8 @@ class TcpClientHandler(private val activeFrg : ReceiveFragment, private var retu
                 Log.i("Server", "Error: $e")
                 e.printStackTrace()
                 try {
-                    dataInputStream.close()
-                    dataOutputStream.close()
+                    //dataInputStream.close()
+                    //dataOutputStream.close()
                 } catch (ex: IOException) {
                     ex.printStackTrace()
                 }
@@ -99,8 +104,12 @@ class TCPClient(private val sendFrg : SendFragment, private val host: String, pr
             clSocket.setSoLinger(true, 1)
 
             clSocket.connect(InetSocketAddress(host, port.toInt()), 500)
-            DataOutputStream(clSocket.getOutputStream()).writeUTF(message)
-            val receivedData = BufferedReader(DataInputStream(clSocket.getInputStream()).reader()).readLine()
+            Log.i("Client", "Here1")
+            DataOutputStream(clSocket.getOutputStream()).writeUTF(message+"\n")
+            clSocket.getOutputStream().flush()
+            Log.i("Client", "Here2")
+            val receivedData = BufferedReader(clSocket.getInputStream().reader()).readLine()
+            Log.i("Client", "Here3")
 
             clSocket.close()
             val cal = Calendar.getInstance()
