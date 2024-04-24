@@ -18,7 +18,7 @@
     <string name="editMessageReturn_placeholder">Return Message</string>
     <string name="comingSoon">Coming Soon…</string>
     <string name="experimentDescription">
-        This is an experiment to check Socket Connectivity between Android and other platforms
+        An Experimental app to send/receive messages using Simple Sockets.
     </string>
     <string name="author">Made by DAWN/ペンギン</string>
     <string name="dawnLogoDescription">

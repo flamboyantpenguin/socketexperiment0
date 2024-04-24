@@ -10,16 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socketexperiment0.R
-import com.example.socketexperiment0.connectionHandler.TcpClientHandler
+import com.example.socketexperiment0.connectionHandler.TCPListener
 import com.example.socketexperiment0.databinding.FragmentReceiveBinding
 import com.example.socketexperiment0.ui.CustomAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.materialswitch.MaterialSwitch
-import java.io.DataInputStream
-import java.io.DataOutputStream
-import java.io.IOException
 import java.net.ServerSocket
-import java.net.Socket
 import java.util.LinkedList
 import java.util.Stack
 
@@ -28,8 +24,11 @@ class ReceiveFragment : Fragment() {
 
     var killSwitch = false
     var tempLst = LinkedList<String>()
+    var returnText = ""
     var msgLst = Stack<ArrayList<String>>()
     private val arrayAdapter = CustomAdapter(this.msgLst)
+    private var threadTracker  = ArrayList<Thread>()
+    var socketTracker  = ArrayList<ServerSocket>()
 
 
 
@@ -37,7 +36,7 @@ class ReceiveFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,15 +52,15 @@ class ReceiveFragment : Fragment() {
          
         val listenToggle : MaterialSwitch = binding.listenToggleSwitch
 
+
         listenToggle.setOnClickListener {
             startMeow()
-            this.killSwitch = !listenToggle.isChecked
         }
 
         val recyclerView: RecyclerView = binding.msgLstView
 
         //val recyclerView: RecyclerView = binding.root.findViewById(R.id.msgLstView)
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
+        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recyclerView.setLayoutManager(layoutManager)
         recyclerView.adapter = this.arrayAdapter
 
@@ -87,89 +86,53 @@ class ReceiveFragment : Fragment() {
     }
 
 
+    fun assassin() {
+        if (this.killSwitch) {
+            for (i in this.threadTracker) {
+                Log.d("Server", "Killed ${i.toString()}")
+                i.interrupt()
+            }
+            for (i in this.socketTracker) {
+                Log.d("Socket", "Closed ${i.toString()}")
+                i.close()
+            }
+        }
+    }
+
+
     private fun startMeow() : Int {
 
-        var srSocket: ServerSocket
-        var clSocket: Socket? = null
+
 
         this.killSwitch = !(this.binding.listenToggleSwitch.isChecked)
 
         val progress = this.binding.progressBar
 
-        //val hostname = binding.editReceiveHost.editText?.text.toString()
         val port = binding.editReceivePort.editText?.text.toString()
-        val returnText = binding.editReceiveReturn.editText?.text.toString()
+        this.returnText = binding.editReceiveReturn.editText?.text.toString()
 
-        if (port.isEmpty()) {
+        if (port.isEmpty() or returnText.isEmpty()) {
             Toast.makeText(binding.root.context, "Fill all fields to continue", Toast.LENGTH_SHORT)
                 .show()
+            binding.listenToggleSwitch.isChecked = false
             return 1
         }
 
-        val startListen = Thread {
-            srSocket = ServerSocket(port.toInt())
-            try {
-                while (!(this.killSwitch)) {
-                    clSocket = srSocket.accept()
-                    Log.i("Server", "New client: $clSocket")
-                    val dataInputStream = DataInputStream(clSocket?.getInputStream())
-                    val dataOutputStream = DataOutputStream(clSocket?.getOutputStream())
-
-                    // Use threads for each client to communicate with them simultaneously
-                    val t: Thread = TcpClientHandler(
-                        this,
-                        returnText,
-                        dataInputStream,
-                        dataOutputStream,
-                        clSocket ?: Socket()
-                    )
-                    t.start()
-                }
-                srSocket.close()
-            } catch (e: IOException) {
-                e.printStackTrace()
-                try {
-                    clSocket?.close()
-                    srSocket.close()
-                } catch (ex: IOException) {
-                    ex.printStackTrace()
-                }
-            }
-        }
-
-
-        val progressBarUpdate = Thread() {
-
-            var i = 0
-            while (i < 100) {
-                i += 1
-                activity?.runOnUiThread {
-                    progress.progress = i
-                }
-                try {
-                    Thread.sleep(100)
-                } catch (e: InterruptedException) {
-                    e.printStackTrace()
-                }
-            }
-        }
-
         if (!(killSwitch)) {
+            val t  = TCPListener(this, port.toInt())
             progress.visibility = View.VISIBLE
-            progressBarUpdate.start()
+            //progressBarUpdate.start()
             Log.i("Server", "Mew")
             msgLst.clear()
-            this.arrayAdapter.notifyItemRemoved(0)
-            startListen.start()
-            //checkUpdate.start()
+            //this.arrayAdapter.notifyItemRemoved(0)
+            t.start()
+            this.threadTracker.add(t)
             Toast.makeText(binding.root.context, "Started Listening", Toast.LENGTH_SHORT).show()
             Log.i("Server", "Started Listening")
         } else {
-            this.killSwitch = true
+            this.assassin()
+            //progressBarUpdate.interrupt()
             progress.visibility = View.INVISIBLE
-            startListen.join()
-            //checkUpdate.join()
-            progressBarUpdate.interrupt()
             Toast.makeText(binding.root.context, "Stopped Listening", Toast.LENGTH_SHORT).show()
             val tmpSize = msgLst.size
             this.msgLst.clear()

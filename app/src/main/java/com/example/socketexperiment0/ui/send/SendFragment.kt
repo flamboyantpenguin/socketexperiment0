@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.socketexperiment0.connectionHandler.TCPHandler
+import com.example.socketexperiment0.R
+import com.example.socketexperiment0.connectionHandler.TCPClient
 import com.example.socketexperiment0.databinding.FragmentSendBinding
 import com.example.socketexperiment0.ui.CustomAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
 import java.util.Stack
 
@@ -43,26 +45,6 @@ class SendFragment : Fragment() {
         historyListView.adapter = this.arrayAdapter
 
 
-        /*
-        val checkUpdate = Thread() {
-            var index = 0
-            while (true) {
-                if (this.history.count() > index) {
-                    activity?.runOnUiThread {
-                        index = this.history.count()
-                        this.arrayAdapter.notifyItemInserted(index)
-                    }
-                }
-                if (index !=0 && this.history.isEmpty()) {
-                    activity?.runOnUiThread { this.arrayAdapter.notifyItemRangeRemoved(0, index) }
-                }
-            }
-        }
-
-        checkUpdate.start()
-
-         */
-
         val refreshButton = binding.refreshButton
 
         refreshButton.setOnClickListener() {
@@ -71,6 +53,8 @@ class SendFragment : Fragment() {
             this.updateAdapter(tmp)
             Toast.makeText(binding.root.context, "History Cleared", Toast.LENGTH_SHORT).show()
         }
+
+        activity?.findViewById<FloatingActionButton?>(R.id.mainButton)?.show()
 
 
 
@@ -120,10 +104,9 @@ class SendFragment : Fragment() {
             return 1
         }
 
-        val thread = TCPHandler(this, host, port, message)
+        val thread = TCPClient(this, host, port, message)
         Toast.makeText(binding.root.context, "Sending Data to $host:$port", Toast.LENGTH_SHORT).show()
         thread.start()
-        thread.join()
 
         return thread.status
         //Toast.makeText(binding.root.context, "Received: $receivedData", Toast.LENGTH_SHORT).show()
