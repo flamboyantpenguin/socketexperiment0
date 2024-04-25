@@ -1,57 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.about.AboutFragment"
     android:paddingBottom="?actionBarSize">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        app:navigationIcon="@drawable/app_logo"
-        android:layout_height="60dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:logoDescription="@string/app_name"
-        app:title="@string/app_name"
-        app:titleTextColor="@color/black" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="369dp"
-        android:layout_height="81dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="68dp"
-        android:text="@string/experimentDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="220dp"
-        android:layout_height="123dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="112dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/dawn_1080"
-        android:contentDescription="@string/dawnLogoDescription"/>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/author"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:context=".ui.about.AboutFragment">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/appDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/noto_sans"
+            android:justificationMode="inter_word"
+            android:text="@string/experimentDescription"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/followWebsiteButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:text="@string/author"
+            app:layout_constraintEnd_toStartOf="@+id/followGitHubButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appDescription" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/followGitHubButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:rippleColor="?attr/colorTertiary"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="?attr/colorSecondary"
+            android:text="@string/github_follow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/followWebsiteButton"
+            app:layout_constraintTop_toBottomOf="@id/appDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            app:rippleColor="?attr/colorTertiary"
+            android:layout_marginEnd="20dp"
+            android:justificationMode="inter_word"
+            android:text="@string/aboutTitle1Text"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/followGitHubButton" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutPara1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/comfortaa"
+            android:justificationMode="inter_word"
+            android:text="@string/aboutPara1Text"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutTitle1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:justificationMode="inter_word"
+            android:text="@string/aboutTitle2Text"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutPara1" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutPara2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/comfortaa"
+            android:justificationMode="inter_word"
+            android:text="@string/aboutPara2Text"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutTitle2" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutTitle3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:justificationMode="inter_word"
+            android:text="@string/aboutTitle3Text"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutPara2" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/aboutPara3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/comfortaa"
+            android:justificationMode="inter_word"
+            android:text="@string/aboutPara3Text"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutTitle3" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView2"
+            android:layout_width="220dp"
+            android:layout_height="123dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
+            android:contentDescription="@string/dawnLogoDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aboutPara3"
+            app:srcCompat="@drawable/dawn_1080" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

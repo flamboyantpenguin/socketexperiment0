@@ -54,6 +54,8 @@ class SendFragment : Fragment() {
             Toast.makeText(binding.root.context, "History Cleared", Toast.LENGTH_SHORT).show()
         }
 
+
+        //activity?.actionBar?.show()
         activity?.findViewById<FloatingActionButton?>(R.id.mainButton)?.show()
 
 

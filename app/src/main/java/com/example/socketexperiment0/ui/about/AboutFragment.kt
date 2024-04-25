@@ -1,11 +1,15 @@
 package com.example.socketexperiment0.ui.about
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.socketexperiment0.R
 import com.example.socketexperiment0.databinding.AboutBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class AboutFragment : Fragment() {
@@ -16,7 +20,7 @@ class AboutFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    val binding get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +33,18 @@ class AboutFragment : Fragment() {
 
 
         _binding = AboutBinding.inflate(inflater, container, false)
+
+        activity?.findViewById<FloatingActionButton?>(R.id.mainButton)?.hide()
+
+        binding.followWebsiteButton.setOnClickListener() {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://linktr.ee/thelinuxpenguin"))
+            startActivity(browserIntent)
+        }
+        binding.followGitHubButton.setOnClickListener() {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/flamboyantpenguin/socketexperiment0"))
+            startActivity(browserIntent)
+        }
+
 
         return binding.root
     }

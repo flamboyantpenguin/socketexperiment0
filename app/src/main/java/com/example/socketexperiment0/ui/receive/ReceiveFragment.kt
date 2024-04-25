@@ -49,7 +49,8 @@ class ReceiveFragment : Fragment() {
 
 
         _binding = FragmentReceiveBinding.inflate(inflater, container, false)
-         
+
+
         val listenToggle : MaterialSwitch = binding.listenToggleSwitch
 
 
@@ -68,7 +69,6 @@ class ReceiveFragment : Fragment() {
         progress.visibility = View.INVISIBLE
 
         activity?.findViewById<FloatingActionButton?>(R.id.mainButton)?.hide()
-
 
         return binding.root
     }

@@ -5,6 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        app:navigationIcon="@drawable/app_logo"
+        android:layout_height="60dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:logoDescription="@string/app_name"
+        app:title="@string/app_name"
+        app:titleTextColor="@color/black" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
@@ -23,9 +39,9 @@
         android:id="@+id/nav_host_fragment_activity_main"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
+        android:layout_height="0dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -33,7 +49,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintVertical_bias="1.0"
         app:layout_wrapBehaviorInParent="vertical_only"
         app:navGraph="@navigation/mobile_navigation" />
@@ -46,6 +62,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
+        style="@style/Widget.Material3.FloatingActionButton.Primary"
         android:tooltipText="@string/mainButtonDescription"
         android:layout_gravity="bottom|end"
         android:contentDescription="@string/mainButtonDescription"

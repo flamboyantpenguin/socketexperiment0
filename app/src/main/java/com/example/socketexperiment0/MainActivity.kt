@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.socketexperiment0.databinding.ActivityMainBinding
 import com.example.socketexperiment0.ui.send.SendFragment
@@ -31,12 +29,15 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
         findViewById<BottomNavigationView>(R.id.nav_view).setupWithNavController(navController)
+        /*
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_send, R.id.navigation_receive, R.id.navigation_about
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+
+         */
+        //setupActionBarWithNavController(navController, appBarConfiguration)
 
         //var rFrg : ReceiveFragment
         val activeFrg = navHostFragment.childFragmentManager.fragments[0] as SendFragment
@@ -57,7 +58,8 @@ class MainActivity : AppCompatActivity() {
              */
         }
 
-        //supportActionBar?.show()
+        //supportActionBar?.hide()
+
     }
 
     override fun onResume() {

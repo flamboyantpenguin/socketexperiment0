@@ -1,5 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources >
     <!-- Base application theme. -->
     <style name="Theme.SocketExperiment0" parent="Theme.Material3.DynamicColors.Light">
+        <item name="fontFamily">@font/noto_sans</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/material_dynamic_primary30</item>
+        <item name="colorSecondary">@color/material_dynamic_secondary30</item>
+        <item name="colorTertiary">@color/material_dynamic_tertiary30</item>
+        <item name="colorAccent">@color/material_dynamic_primary40</item>
+        <item name="useMaterialThemeColors">true</item>
+        <item name="colorButtonNormal">@color/material_dynamic_primary30</item>
     </style>
 </resources>
