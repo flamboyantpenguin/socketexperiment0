@@ -12,18 +12,19 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:autoSizeTextType="uniform"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:textColor="@color/material_dynamic_primary60"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="?attr/colorTertiary"
         android:text="@string/send_description"
         android:textAlignment="viewStart"
         android:textIsSelectable="false"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -31,13 +32,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:hint="@string/editSendHost_placeholder"
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toStartOf="@+id/editSendPort"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/description">
+        app:layout_constraintTop_toBottomOf="@id/description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -51,14 +52,14 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/editSendPort_placeholder"
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editSendHost"
-        app:layout_constraintTop_toTopOf="@id/description">
+        app:layout_constraintTop_toBottomOf="@id/description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -98,6 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        app:rippleColor="?attr/colorTertiary"
         android:backgroundTint="@color/material_dynamic_primary80"
         android:contentDescription="@string/refresh_button_desc"
         app:icon="@drawable/round_refresh_24"

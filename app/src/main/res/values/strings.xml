@@ -17,10 +17,46 @@
     <string name="editMessage_placeholder">Message</string>
     <string name="editMessageReturn_placeholder">Return Message</string>
     <string name="comingSoon">Coming Soon…</string>
+
     <string name="experimentDescription">
-        An Experimental app to send/receive messages using Simple Sockets.
+        Socket Experiment 0 is an  experimental app to send/receive messages using Simple Sockets.
+        This apps make use of Java Sockets to send simple strings to a listening socket or receive data from a sender.
+        This app is made us a part of an experiment to check simple socket connectivity in Android. We aim to make this app a simple,
+        interactive and User-friendly solution for users to understand socket connectivity in a simple way. This app does not support
+        advanced features for communication like headers. Incoming data is read only till new line or EOF.
     </string>
-    <string name="author">Made by DAWN/ペンギン</string>
+
+    <string name="aboutTitle1Text">
+        Socket
+    </string>
+    <string name="aboutPara1Text">
+        A Network Socket is a communication endpoint in a network. A node initiates a socket to communicate with another device.
+        As per the client server model, the socket that sends the message uses the Client Socket and the receiver uses the Server socket.
+        Sockets are available in most of the programming languages and frameworks to help developers communicate between servers. This
+        application makes use of the Java Socket (java.net.Socket and java.net.ServerSocket).
+    </string>
+
+    <string name="aboutTitle2Text">
+        Client Socket
+    </string>
+    <string name="aboutPara2Text">
+        Client Sockets are senders initialized on the sending device. Their job is to initiate a connection with the server socket and send/receive data
+        with the server. First the client socket binds itself to its local address and a randomised port. Then it tries to connect with the remote host
+        on the specified port. After the communication is completed, the socket is immediately closed.
+    </string>
+
+    <string name="aboutTitle3Text">
+        Server Socket
+    </string>
+    <string name="aboutPara3Text">
+        Server sockets are listeners initialized on the listening device. Their job is to listen for incoming connections. When a incoming connection is
+        detected, it accepts the connection and creates a client socket out it for further communication with the client. In other words, server sockets
+        are responsible only for accepting connections and converting them to client sockets and not sending/receiving any data, the actual communication
+        is done by client sockets.
+    </string>
+
+
+    <string name="author">DAWN/ペンギン</string>
     <string name="dawnLogoDescription">
         DAWN Studios Logo
     </string>
@@ -29,4 +65,5 @@
     <string name="notification_icon_desc">Notification Icon</string>
     <string name="status_desc">Status</string>
     <string name="refresh_button_desc">Refresh</string>
+    <string name="github_follow">GitHub</string>
 </resources>

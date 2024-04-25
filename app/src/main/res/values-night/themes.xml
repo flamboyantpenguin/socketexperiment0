@@ -1,6 +1,9 @@
 <resources >
     <!-- Base application theme. -->
     <style name="Theme.SocketExperiment0" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="fontFamily">@font/noto_sans</item>
         <item name="colorPrimary">@color/material_dynamic_primary70</item>
         <item name="colorSecondary">@color/material_dynamic_secondary70</item>
         <item name="colorTertiary">@color/material_dynamic_tertiary70</item>
@@ -8,4 +11,5 @@
         <item name="useMaterialThemeColors">true</item>
         <item name="colorButtonNormal">@color/material_dynamic_primary80</item>
     </style>
+
 </resources>
