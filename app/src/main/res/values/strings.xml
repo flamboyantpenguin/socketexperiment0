@@ -20,7 +20,7 @@
 
     <string name="experimentDescription">
         Socket Experiment 0 is an  experimental app to send/receive messages using Simple Sockets.
-        This apps make use of Java Sockets to send simple strings to a listening socket or receive data from a sender.
+        This app make use of Java Sockets to send simple strings to a listening socket or receive data from a sender.
         This app is made us a part of an experiment to check simple socket connectivity in Android. We aim to make this app a simple,
         interactive and User-friendly solution for users to understand socket connectivity in a simple way. This app does not support
         advanced features for communication like headers. Incoming data is read only till new line or EOF.
