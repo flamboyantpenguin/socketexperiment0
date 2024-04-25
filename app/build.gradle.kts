@@ -26,8 +26,8 @@ android {
             )
         }
         getByName("debug") {
-            versionNameSuffix = ".pre-alpha"
-            applicationIdSuffix = ".pre-alpha"
+            versionNameSuffix = ".prealpha"
+            applicationIdSuffix = ".prealpha"
         }
     }
     compileOptions {

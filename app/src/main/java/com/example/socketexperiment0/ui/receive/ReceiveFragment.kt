@@ -112,7 +112,7 @@ class ReceiveFragment : Fragment() {
         this.returnText = binding.editReceiveReturn.editText?.text.toString()
 
         if (port.isEmpty() or returnText.isEmpty()) {
-            Toast.makeText(binding.root.context, "Fill all fields to continue", Toast.LENGTH_SHORT)
+            Toast.makeText(binding.root.context, "Fill Port and Return Address to continue", Toast.LENGTH_SHORT)
                 .show()
             binding.listenToggleSwitch.isChecked = false
             return 1

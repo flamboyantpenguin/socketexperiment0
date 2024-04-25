@@ -110,8 +110,9 @@ class SendFragment : Fragment() {
         Toast.makeText(binding.root.context, "Sending Data to $host:$port", Toast.LENGTH_SHORT).show()
         thread.start()
 
+        thread.join()
+
         return thread.status
-        //Toast.makeText(binding.root.context, "Received: $receivedData", Toast.LENGTH_SHORT).show()
     }
 
 }
