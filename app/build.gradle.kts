@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.socketexperiment0"
+    namespace = "com.elegantpenguin.socketsimplex"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.socketexperiment0"
+        applicationId = "com.elegantpenguin.socketsimplex"
         targetSdk = 34
         versionName = "1.0.4"
 

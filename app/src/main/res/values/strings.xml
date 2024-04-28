@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">"Socket Experiment 0"</string>
+    <string name="app_name">"Socket Simplex"</string>
     <string name="title_send">Send</string>
     <string name="title_receive">Receive</string>
     <string name="title_about">About</string>

@@ -1,8 +1,8 @@
-package com.example.socketexperiment0.connectionHandler
+package com.elegantpenguin.socketsimplex.connectionHandler
 
 import android.util.Log
-import com.example.socketexperiment0.ui.receive.ReceiveFragment
-import com.example.socketexperiment0.ui.send.SendFragment
+import com.elegantpenguin.socketsimplex.ui.receive.ReceiveFragment
+import com.elegantpenguin.socketsimplex.ui.send.SendFragment
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
