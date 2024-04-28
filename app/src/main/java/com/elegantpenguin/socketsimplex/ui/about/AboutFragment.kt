@@ -1,4 +1,4 @@
-package com.example.socketexperiment0.ui.about
+package com.elegantpenguin.socketsimplex.ui.about
 
 import android.content.Intent
 import android.net.Uri
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.socketexperiment0.R
-import com.example.socketexperiment0.databinding.AboutBinding
+import com.elegantpenguin.socketsimplex.R
+import com.elegantpenguin.socketsimplex.databinding.AboutBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 

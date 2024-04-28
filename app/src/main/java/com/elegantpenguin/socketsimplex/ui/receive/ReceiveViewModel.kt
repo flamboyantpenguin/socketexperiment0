@@ -1,7 +1,5 @@
-package com.example.socketexperiment0.ui.receive
+package com.elegantpenguin.socketsimplex.ui.receive
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ReceiveViewModel : ViewModel() {

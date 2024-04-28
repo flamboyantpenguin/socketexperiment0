@@ -4,16 +4,17 @@ plugins {
 }
 
 android {
-    namespace = "com.example.socketexperiment0"
+    namespace = "com.elegantpenguin.socketsimplex"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.socketexperiment0"
-        minSdk = 30
+        applicationId = "com.elegantpenguin.socketsimplex"
         targetSdk = 34
-        versionName = "0.2"
+        versionName = "1.0.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        versionCode = 1
+        minSdk = 26
     }
 
     buildTypes {
@@ -23,10 +24,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            versionNameSuffix = "1.0.2"
         }
         getByName("debug") {
-            versionNameSuffix = "1.0.2"
+            versionNameSuffix = ".prealpha"
+            applicationIdSuffix = ".prealpha"
         }
     }
     compileOptions {

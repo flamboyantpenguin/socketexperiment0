@@ -1,4 +1,4 @@
-package com.example.socketexperiment0.ui.receive
+package com.elegantpenguin.socketsimplex.ui.receive
 
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.socketexperiment0.R
-import com.example.socketexperiment0.connectionHandler.TCPListener
-import com.example.socketexperiment0.databinding.FragmentReceiveBinding
-import com.example.socketexperiment0.ui.CustomAdapter
+import com.elegantpenguin.socketsimplex.R
+import com.elegantpenguin.socketsimplex.connectionHandler.TCPListener
+import com.elegantpenguin.socketsimplex.databinding.FragmentReceiveBinding
+import com.elegantpenguin.socketsimplex.ui.CustomAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.materialswitch.MaterialSwitch
 import java.net.ServerSocket
@@ -112,7 +112,7 @@ class ReceiveFragment : Fragment() {
         this.returnText = binding.editReceiveReturn.editText?.text.toString()
 
         if (port.isEmpty() or returnText.isEmpty()) {
-            Toast.makeText(binding.root.context, "Fill all fields to continue", Toast.LENGTH_SHORT)
+            Toast.makeText(binding.root.context, "Fill Port and Return Address to continue", Toast.LENGTH_SHORT)
                 .show()
             binding.listenToggleSwitch.isChecked = false
             return 1

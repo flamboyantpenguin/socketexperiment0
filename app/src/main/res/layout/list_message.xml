@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text = "@string/title_receive"
-        android:textColor="@color/material_dynamic_primary70"
+        android:textColor="?attr/colorSecondary"
         android:textSize = "14sp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="50dp"/>
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:text = "@string/title_receive"
-        android:textColor="@color/material_dynamic_primary70"
+        android:textColor="?attr/colorTertiary"
         android:textSize = "14sp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="50dp"/>
@@ -58,7 +58,7 @@
         android:layout_gravity="end"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
-        android:tint  ="@color/material_dynamic_primary70"
+        android:tint  ="?attr/colorSecondary"
         android:contentDescription = "@string/notification_icon_desc"
         android:src= "@drawable/outline_message_24"/>
 

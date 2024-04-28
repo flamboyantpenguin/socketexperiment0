@@ -1,11 +1,11 @@
-package com.example.socketexperiment0.ui
+package com.elegantpenguin.socketsimplex.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.socketexperiment0.R
+import com.elegantpenguin.socketsimplex.R
 import java.util.ArrayList
 import java.util.Stack
 

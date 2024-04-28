@@ -1,4 +1,4 @@
-package com.example.socketexperiment0.ui.about
+package com.elegantpenguin.socketsimplex.ui.about
 
 import androidx.lifecycle.ViewModel
 

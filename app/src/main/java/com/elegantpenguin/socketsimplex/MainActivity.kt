@@ -1,4 +1,4 @@
-package com.example.socketexperiment0
+package com.elegantpenguin.socketsimplex
 
 
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.socketexperiment0.databinding.ActivityMainBinding
-import com.example.socketexperiment0.ui.send.SendFragment
+import com.elegantpenguin.socketsimplex.databinding.ActivityMainBinding
+import com.elegantpenguin.socketsimplex.ui.send.SendFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.floatingactionbutton.FloatingActionButton

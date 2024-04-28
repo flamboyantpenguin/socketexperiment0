@@ -1,10 +1,6 @@
-package com.example.socketexperiment0.ui.send
+package com.elegantpenguin.socketsimplex.ui.send
 
-import android.widget.Button
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.socketexperiment0.R
-import com.google.android.material.textfield.TextInputLayout
 
 class SendViewModel : ViewModel() {
 

@@ -1,4 +1,4 @@
-package com.example.socketexperiment0
+package com.elegantpenguin.socketsimplex
 
 import org.junit.Test
 

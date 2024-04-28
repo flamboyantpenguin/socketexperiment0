@@ -1,4 +1,4 @@
-package com.example.socketexperiment0.ui.send
+package com.elegantpenguin.socketsimplex.ui.send
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.socketexperiment0.R
-import com.example.socketexperiment0.connectionHandler.TCPClient
-import com.example.socketexperiment0.databinding.FragmentSendBinding
-import com.example.socketexperiment0.ui.CustomAdapter
+import com.elegantpenguin.socketsimplex.R
+import com.elegantpenguin.socketsimplex.connectionHandler.TCPClient
+import com.elegantpenguin.socketsimplex.databinding.FragmentSendBinding
+import com.elegantpenguin.socketsimplex.ui.CustomAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
 import java.util.Stack
@@ -110,8 +110,9 @@ class SendFragment : Fragment() {
         Toast.makeText(binding.root.context, "Sending Data to $host:$port", Toast.LENGTH_SHORT).show()
         thread.start()
 
+        thread.join()
+
         return thread.status
-        //Toast.makeText(binding.root.context, "Received: $receivedData", Toast.LENGTH_SHORT).show()
     }
 
 }

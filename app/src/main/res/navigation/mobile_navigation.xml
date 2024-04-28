@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/navigation_send"
         android:tag="temp1"
-        android:name="com.example.socketexperiment0.ui.send.SendFragment"
+        android:name="com.elegantpenguin.socketsimplex.ui.send.SendFragment"
         android:label="@string/title_send"
         tools:layout="@layout/fragment_send" />
 
     <fragment
         android:id="@+id/navigation_receive"
         android:tag="temp2"
-        android:name="com.example.socketexperiment0.ui.receive.ReceiveFragment"
+        android:name="com.elegantpenguin.socketsimplex.ui.receive.ReceiveFragment"
         android:label="@string/title_receive"
         tools:layout="@layout/fragment_receive" />
 
     <fragment
         android:id="@+id/navigation_about"
         android:tag="temp3"
-        android:name="com.example.socketexperiment0.ui.about.AboutFragment"
+        android:name="com.elegantpenguin.socketsimplex.ui.about.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/about" />
 

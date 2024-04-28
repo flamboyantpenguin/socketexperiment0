@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SocketExperiment0"
+rootProject.name = "SocketSimplex"
 include(":app")
